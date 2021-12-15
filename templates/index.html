@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            width: 90%;
+            margin-left: 1%;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background-color: antiquewhite;
+            position: relative;
+            margin-left: 13%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .btn {
+            position: relative;
+            border-radius: 8px;
+            background-color: rgb(77, 95, 89);
+            color: white;
+            padding: 20% 5%;
+        }
+        .btn:hover{
+            background-color: white;
+            color: red;
+            cursor: pointer;
+        }
+        .box{
+            position: relative;
+            width: 80%;
+            display: flex;
+            justify-content: space-around;
+            padding:10px 10px;
+            background-color :aquamarine;
+            margin-top: 15px;
+        }
+        .box-l{
+
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .box-r{
+            width: 10%;
+        }
+        
+    
+    </style>
+</head>
+
+<body>
+    <div class="add">
+        <h1 style="font-size: 50px;">Movies list</h1>
+        {% for data in movie %}
+        <div class="box">
+<div class="box-l">
+            <form action="/add/{{data.id}}" class="fm" >
+                {{ data.movie_name }}
+            </div>
+            <div class="box-r">
+                <button class="btn"><i class="fa fa-heart" style="font-size:15px;"></i></button>
+            </div>
+                <br>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="add">
+        <h1 style="font-size: 50px;">Fav movies</h1>
+        {% for data in fav %}
+        <div class="box">
+            <div class="box-l">
+            <form action="/remove/{{data.id}}" class="fm">
+                {{ data.fav_name }}
+            </div>
+            <div class="box-r">
+                <button type="submit" class="btn"><i class="fa fa-remove"
+                        style="font-size:15px;"></i></button>
+                    </div>
+                <br>
+            </form>
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>
